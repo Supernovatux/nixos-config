@@ -25,7 +25,12 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+  services.xremap = {
+          /* NOTE: since this sample configuration does not have any DE, xremap needs to be started manually by systemctl --user start xremap */
+          serviceMode = "user";
+          userName = "thulashitharan";
+	  withKDE = true;
+  };
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -37,9 +42,13 @@
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
   services.printing.enable = true;
-
+  services.xremap.config.modmap = [
+  {
+     name = "Global";
+     remap = { "KEY_RIGHTALT" = "KEY_BACKSPACE"; }; # globally remap CapsLock to Esc
+   }
+ ];
    services.pipewire = {
      enable = true;
      pulse.enable = true;
@@ -54,6 +63,8 @@
      packages = with pkgs; [
        firefox
        tree
+       google-chrome
+       element-desktop-wayland
      ];
   };
 
@@ -61,6 +72,8 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
+     neovim
+     fira-code-nerdfont
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
