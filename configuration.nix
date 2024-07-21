@@ -9,9 +9,14 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+
+            boot.lanzaboote = {
+              enable = true;
+              pkiBundle = "/etc/secureboot";
+            };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
    networking.hostName = "supernovatux"; # Define your hostname.
@@ -38,10 +43,12 @@
      keyMap = "us";
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "root" "@wheel" ];
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
   services.printing.enable = true;
   services.xremap.config.modmap = [
   {
@@ -65,15 +72,27 @@
        tree
        google-chrome
        element-desktop-wayland
+       spotify
+       ani-cli
      ];
   };
-
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
      neovim
      fira-code-nerdfont
+     gcc
+     rustup
+     gcc 
+     gdb
+     gnumake
+     sbctl
+     efitools
+     efibootmgr
+    fastfetch
    ];
 
   # Some programs need SUID wrappers, can be configured further or are

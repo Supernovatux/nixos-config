@@ -6,13 +6,20 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     xremap.url = "github:xremap/nix-flake";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, chaotic, xremap, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, chaotic, xremap, lanzaboote, ... }: {
     # NOTE: 'nixos' is the default hostname set by the installer
     nixosConfigurations.supernovatux = nixpkgs.lib.nixosSystem {
       # NOTE: Change this to aarch64-linux if you are on ARM
       system = "x86_64-linux";
       modules = [ 
+	lanzaboote.nixosModules.lanzaboote
 	xremap.nixosModules.default
         ./configuration.nix 
         nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
