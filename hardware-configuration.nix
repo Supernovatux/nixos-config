@@ -7,7 +7,7 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
