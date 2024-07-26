@@ -26,6 +26,7 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
+  services.cloudflare-warp.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -74,6 +75,9 @@
        element-desktop-wayland
        spotify
        ani-cli
+      qbittorrent
+      mpv
+
      ];
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -83,7 +87,6 @@
      wget
      git
      neovim
-     fira-code-nerdfont
      gcc
      rustup
      gcc 
@@ -93,7 +96,20 @@
      efitools
      efibootmgr
     fastfetch
+    yq-go
+    cloudflare-warp
    ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk
+    noto-fonts
+    corefonts
+    vistafonts
+    libertine
+    dejavu_fonts
+    inconsolata
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
