@@ -98,6 +98,7 @@
     fastfetch
     yq-go
     cloudflare-warp
+    gh
    ];
 
   fonts.packages = with pkgs; [
