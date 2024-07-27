@@ -102,6 +102,7 @@
     cloudflare-warp
     gh
     nixfmt-rfc-style
+    just
    ];
 
   fonts.packages = with pkgs; [
