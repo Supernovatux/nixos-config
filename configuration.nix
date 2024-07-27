@@ -95,10 +95,13 @@
      sbctl
      efitools
      efibootmgr
+    gitui
+    silver-searcher
     fastfetch
     yq-go
     cloudflare-warp
     gh
+    nixfmt-rfc-style
    ];
 
   fonts.packages = with pkgs; [
