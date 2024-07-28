@@ -20,7 +20,7 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-  security.pam.services.login.enableKwallet = true;
+  security.pam.services.sddm.enableKwallet = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -108,6 +108,7 @@
     gdb
     gnumake
     sbctl
+    kwalletcli
     efitools
     efibootmgr
     gitui
