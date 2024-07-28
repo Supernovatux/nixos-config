@@ -21,6 +21,7 @@
     swappy
     hyprpicker
     pavucontrol
+    tela-icon-theme
     networkmanager
     gtk3
   ];

@@ -4,10 +4,10 @@ import { icon } from "lib/utils"
 import icons from "lib/icons"
 
 const options = mkOptions(OPTIONS, {
-    autotheme: opt(false),
+    autotheme: opt(true),
 
     wallpaper: {
-        resolution: opt<import("service/wallpaper").Resolution>(1920),
+        resolution: opt<import("service/wallpaper").Resolution>(2560),
         market: opt<import("service/wallpaper").Market>("random"),
     },
 
@@ -51,15 +51,15 @@ const options = mkOptions(OPTIONS, {
 
         shadows: opt(true),
         padding: opt(7),
-        spacing: opt(12),
+        spacing: opt(7),
         radius: opt(11),
     },
 
     transition: opt(200),
 
     font: {
-        size: opt(13),
-        name: opt("Ubuntu Nerd Font"),
+        size: opt(11),
+        name: opt("Fira Code Nerd Font Propo Light"),
     },
 
     bar: {
@@ -95,8 +95,8 @@ const options = mkOptions(OPTIONS, {
                 icon: opt(icon(distro.logo, icons.ui.search)),
             },
             label: {
-                colored: opt(false),
-                label: opt(" Applications"),
+                colored: opt(true),
+                label: opt(""),
             },
             action: opt(() => App.toggleWindow("launcher")),
         },
@@ -113,12 +113,12 @@ const options = mkOptions(OPTIONS, {
             low: opt(30),
         },
         workspaces: {
-            workspaces: opt(7),
+            workspaces: opt(6),
         },
         taskbar: {
-            iconSize: opt(0),
-            monochrome: opt(true),
-            exclusive: opt(false),
+            iconSize: opt(16),
+            monochrome: opt(false),
+            exclusive: opt(true),
         },
         messages: {
             action: opt(() => App.toggleWindow("datemenu")),
@@ -130,7 +130,7 @@ const options = mkOptions(OPTIONS, {
             ]),
         },
         media: {
-            monochrome: opt(true),
+            monochrome: opt(false),
             preferred: opt("spotify"),
             direction: opt<"left" | "right">("right"),
             format: opt("{artists} - {title}"),
@@ -158,9 +158,8 @@ const options = mkOptions(OPTIONS, {
             favorites: opt([
                 [
                     "firefox",
-                    "wezterm",
-                    "org.gnome.Nautilus",
-                    "org.gnome.Calendar",
+                    "kitty",
+                    "obsidian",
                     "spotify",
                 ],
             ]),
@@ -170,7 +169,7 @@ const options = mkOptions(OPTIONS, {
     overview: {
         scale: opt(9),
         workspaces: opt(7),
-        monochromeIcon: opt(true),
+        monochromeIcon: opt(false),
     },
 
     powermenu: {

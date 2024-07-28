@@ -14,17 +14,30 @@ in
     terminal = false;
   };
   wayland.windowManager.hyprland = {
+    plugins = [
+      #pkgs.hyprlandPlugins.hyprexpo
+    ];
     enable = true;
     settings = {
-      exec-once = [ "hyprctl setcursor Qogir 24" ];
+      xwayland.force_zero_scaling = true;
+      exec-once = [ 
+	"ags -b hypr"
+	"hyprctl setcursor Qogir 24"
+	"lxqt-policykit-agent"
+      ];
       "$mod" = "SUPER";
       general = {
+	gaps_out = 10;
         layout = "dwindle";
         resize_on_border = true;
       };
+      monitor = [
+        "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1"
+      ];
       misc = {
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
+	vrr = 1;
       };
       input = {
         follow_mouse = 1;
@@ -72,7 +85,7 @@ in
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
               ]
-            ) 10
+            ) 6
           )
         );
       bindle = [
@@ -128,6 +141,16 @@ in
           "workspaces, 1, 6, default"
         ];
       };
+      #      plugin = {
+      #	hyprexpo = {
+      #	columns = 6;
+      # gap_size = 5;
+      #	enable_gesture = true;
+      # gesture_fingers = 3 ; # 3 or 4
+      # gesture_distance = 300; # how far is the "max"
+      # gesture_positive = true; # positive = swipe down. Negative = swipe up.
+      #};
+      #};
     };
   };
 }

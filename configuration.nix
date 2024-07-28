@@ -20,7 +20,7 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-
+  security.pam.services.login.enableKwallet = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -118,10 +118,12 @@
     unzip
     gh
     nixfmt-rfc-style
+    libnotify
     just
     qogir-icon-theme
     morewaita-icon-theme
     adwaita-icon-theme
+    lxqt.lxqt-policykit
   ];
 
   fonts.packages = with pkgs; [
