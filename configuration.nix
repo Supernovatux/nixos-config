@@ -61,7 +61,7 @@
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.theme = "where_is_my_sddm_theme";
+  services.displayManager.sddm.theme = "elegant-sddm";
   security.pam.services.sddm.enableGnomeKeyring = true;
   programs.kdeconnect.enable = true;
   services.printing.enable = true;
@@ -127,7 +127,7 @@
     yq-go
     cloudflare-warp
     unzip
-    where-is-my-sddm-theme
+    elegant-sddm
     gh
     nixfmt-rfc-style
     libnotify
