@@ -1,14 +1,21 @@
-{ inputs,config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
   fish_conf = {
     enable = true;
     enableFishIntegration = true;
   };
-in {
+in
+{
   imports = [
     ./hyprland.nix
     ./ags.nix
     ./theme.nix
+    ./yazi.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -19,7 +26,8 @@ in {
     ls = "eza -l --icons=always";
     cat = "bat";
   };
-  
+  services.gnome-keyring.enable = true;
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -66,7 +74,9 @@ in {
   #
   #  /etc/profiles/per-user/thulashitharan/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
   programs.btop.enable = true;
   programs.bat.enable = true;
   programs.fzf = fish_conf;

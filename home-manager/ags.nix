@@ -1,11 +1,6 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    inputs.ags.homeManagerModules.default
-  ];
+  imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
     bun
@@ -29,8 +24,6 @@
   programs.ags = {
     enable = true;
     configDir = ./ags;
-    extraPackages = with pkgs; [
-      accountsservice
-    ];
+    extraPackages = with pkgs; [ accountsservice ];
   };
 }

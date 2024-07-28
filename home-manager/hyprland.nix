@@ -5,6 +5,64 @@ let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
 in
 {
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+
+  };
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 300;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
+
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          shadow_passes = 2;
+        }
+      ];
+    };
+
+  };
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";
@@ -16,28 +74,28 @@ in
   wayland.windowManager.hyprland = {
     plugins = [
       #pkgs.hyprlandPlugins.hyprexpo
+      pkgs.hyprlandPlugins.hyprspace
     ];
     enable = true;
     settings = {
       xwayland.force_zero_scaling = true;
-      exec-once = [ 
-	"ags -b hypr"
-	"hyprctl setcursor Qogir 24"
-	"lxqt-policykit-agent"
+      exec-once = [
+        "ags -b hypr"
+        "hyprctl setcursor Qogir 24"
+        "lxqt-policykit-agent"
       ];
       "$mod" = "SUPER";
       general = {
-	gaps_out = 10;
+        gaps_out = 10;
         layout = "dwindle";
         resize_on_border = true;
       };
-      monitor = [
-        "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1"
-      ];
+      monitor = [ "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1" ];
       misc = {
+        font_family = "Fira Code Nerd Font Light";
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
-	vrr = 1;
+        vrr = 1;
       };
       input = {
         follow_mouse = 1;
@@ -45,6 +103,14 @@ in
           natural_scroll = "yes";
           disable_while_typing = true;
           drag_lock = true;
+        };
+      };
+      group = {
+        "col.border_active" = "0x33ccffee";
+        "col.border_inactive" = "0x595959aa";
+        groupbar = {
+          "col.active" = "0x33ccffee";
+          "col.inactive" = "0x595959aa";
         };
       };
       binds = {
@@ -67,6 +133,27 @@ in
           "$mod, SPACE, togglefloating"
           "$mod, f, fullscreen"
           "$mod, p, togglesplit"
+          "$mod+SHIFT , q , killactive"
+          "$mod, left, movefocus, l"
+          "$mod, down, movefocus, d"
+          " $mod, up, movefocus, u"
+          "$mod,g,togglegroup"
+          "$mod, right, movefocus, r"
+          "$mod+CONTROL, left, movefocus, l, visible, nowarp"
+          "$mod+CONTROL, down, movefocus, d, visible, nowarp"
+          " $mod+CONTROL, up, movefocus, u, visible, nowarp"
+          "$mod+CONTROL, right, movefocus, r, visible, nowarp"
+          "$mod+SHIFT, left, movewindoworgroup, l"
+          "$mod+SHIFT, down, movewindoworgroup, d"
+          "$mod+SHIFT, up, movewindoworgroup, u"
+          "$mod+SHIFT, right, movewindoworgroup, r"
+          "$mod,tab,changegroupactive,f"
+          "$mod+SHIFT,tab,changegroupactive,b"
+          "$mod+CONTROL+SHIFT, left, movewindow, l, once, visible"
+          "$mod+CONTROL+SHIFT, up, movewindow, u, once, visible"
+          "$mod+CONTROL+SHIFT, down, movewindow, d, once, visible"
+          "$mod+CONTROL+SHIFT, right, movewindow, r, once, visible"
+
         ]
         ++ (
           # workspaces
@@ -85,7 +172,7 @@ in
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
               ]
-            ) 6
+            ) 10
           )
         );
       bindle = [
@@ -109,6 +196,7 @@ in
         "SUPER, mouse:273, resizewindow"
         "SUPER, mouse:272, movewindow"
       ];
+      bindr = [ "SUPER,SUPER_L,exec,ags -b hypr -t launcher" ];
       decoration = {
         rounding = 10;
         drop_shadow = "yes";
@@ -141,16 +229,31 @@ in
           "workspaces, 1, 6, default"
         ];
       };
-      #      plugin = {
-      #	hyprexpo = {
-      #	columns = 6;
-      # gap_size = 5;
-      #	enable_gesture = true;
-      # gesture_fingers = 3 ; # 3 or 4
-      # gesture_distance = 300; # how far is the "max"
-      # gesture_positive = true; # positive = swipe down. Negative = swipe up.
-      #};
-      #};
+      plugin = {
+        overview = {
+          panelHeight = 150;
+          panelBorderWidth = 20;
+          gapsOut = 10;
+          gapsIn = 5;
+          centerAligned = true;
+          hideTopLayers = true;
+          hideOverlayLayers = true;
+          showNewWorkspace = true;
+          exitOnClick = true;
+          exitOnSwitch = true;
+          drawActiveWorkspace = true;
+          reverseSwipe = true;
+        };
+
+        #	hyprexpo = {
+        #	columns = 6;
+        # gap_size = 5;
+        #	enable_gesture = true;
+        # gesture_fingers = 3 ; # 3 or 4
+        # gesture_distance = 300; # how far is the "max"
+        # gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        #};
+      };
     };
   };
 }

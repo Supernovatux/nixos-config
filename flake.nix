@@ -13,18 +13,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, chaotic, xremap, lanzaboote, ... }: {
-    # NOTE: 'nixos' is the default hostname set by the installer
-    nixosConfigurations.supernovatux = nixpkgs.lib.nixosSystem {
-      # NOTE: Change this to aarch64-linux if you are on ARM
-      system = "x86_64-linux";
-      modules = [ 
-	lanzaboote.nixosModules.lanzaboote
-	xremap.nixosModules.default
-        ./configuration.nix 
-        nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
-        chaotic.nixosModules.default 
-      ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixos-hardware,
+      chaotic,
+      xremap,
+      lanzaboote,
+      ...
+    }:
+    {
+      # NOTE: 'nixos' is the default hostname set by the installer
+      nixosConfigurations.supernovatux = nixpkgs.lib.nixosSystem {
+        # NOTE: Change this to aarch64-linux if you are on ARM
+        system = "x86_64-linux";
+        modules = [
+          lanzaboote.nixosModules.lanzaboote
+          xremap.nixosModules.default
+          ./configuration.nix
+          nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
+          chaotic.nixosModules.default
+        ];
+      };
     };
-  };
 }

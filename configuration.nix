@@ -20,10 +20,10 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-  security.pam.services.sddm.enableKwallet = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
-
+  security.pam.services.hyprlock = { };
+  qt.platformTheme = "gnome";
   networking.hostName = "supernovatux"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -60,7 +60,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = false;
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.theme = "where_is_my_sddm_theme";
+  security.pam.services.sddm.enableGnomeKeyring = true;
   programs.kdeconnect.enable = true;
   services.printing.enable = true;
   services.xremap.config.modmap = [
@@ -97,6 +99,15 @@
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  environment.sessionVariables = rec {
+    _JAVA_AWT_WM_NONREPARENTING = 1;
+    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland";
+    CLUTTER_BACKEND = "wayland";
+  };
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -108,7 +119,6 @@
     gdb
     gnumake
     sbctl
-    kwalletcli
     efitools
     efibootmgr
     gitui
@@ -117,15 +127,30 @@
     yq-go
     cloudflare-warp
     unzip
+    where-is-my-sddm-theme
     gh
     nixfmt-rfc-style
     libnotify
     just
+    cachix
     qogir-icon-theme
     morewaita-icon-theme
+    gnome-keyring
     adwaita-icon-theme
+    python312
+    python312Packages.ipython
+    python312Packages.numpy
+    python312Packages.matplotlib
+    libreoffice-qt6-fresh
     lxqt.lxqt-policykit
   ];
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+  services.tumbler.enable = true; # Thumbnail support for images
 
   fonts.packages = with pkgs; [
     noto-fonts-cjk

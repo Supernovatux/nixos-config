@@ -16,18 +16,30 @@
     matugen.url = "github:InioX/matugen";
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nixvim,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       homeConfigurations."thulashitharan" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-	extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+        };
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix nixvim.homeManagerModules.nixvim ];
+        modules = [
+          ./home.nix
+          nixvim.homeManagerModules.nixvim
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
