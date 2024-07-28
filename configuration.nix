@@ -32,6 +32,7 @@
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
   services.cloudflare-warp.enable = true;
+  programs.hyprland.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -59,7 +60,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
   programs.kdeconnect.enable = true;
   services.printing.enable = true;
   services.xremap.config.modmap = [
@@ -114,9 +115,13 @@
     fastfetch
     yq-go
     cloudflare-warp
+    unzip
     gh
     nixfmt-rfc-style
     just
+    qogir-icon-theme
+    morewaita-icon-theme
+    adwaita-icon-theme
   ];
 
   fonts.packages = with pkgs; [

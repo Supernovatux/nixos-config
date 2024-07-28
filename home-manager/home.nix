@@ -1,10 +1,14 @@
-{ config, pkgs, ... }:
+{ inputs,config, pkgs, ... }:
 let
   fish_conf = {
     enable = true;
     enableFishIntegration = true;
   };
 in {
+  imports = [
+    ./hyprland.nix
+    ./ags.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "thulashitharan";
@@ -14,6 +18,7 @@ in {
     ls = "eza -l --icons=always";
     cat = "bat";
   };
+  
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
