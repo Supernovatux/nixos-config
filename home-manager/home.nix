@@ -84,7 +84,18 @@ in
   programs.eza = fish_conf;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+        interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+      # Enable a plugin (here grc for colorized command output) from nixpkgs
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      { name = "done"; src = pkgs.fishPlugins.done.src; }
+      { name = "fzf"; src = pkgs.fishPlugins.fzf-fish.src; }
+    ];
+  };
   programs.nixvim = import ./nixvim/default.nix;
   programs.kitty = import ./kitty.nix;
   programs.starship = import ./starship.nix;

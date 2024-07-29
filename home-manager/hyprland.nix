@@ -129,7 +129,7 @@ in
 
       bind =
         [
-          "$mod, RETURN, exec, kitty"
+          "$mod, RETURN, exec, kitty -1"
           "$mod, SPACE, togglefloating"
           "$mod, f, fullscreen"
           "$mod, p, togglesplit"
@@ -153,6 +153,7 @@ in
           "$mod+CONTROL+SHIFT, up, movewindow, u, once, visible"
           "$mod+CONTROL+SHIFT, down, movewindow, d, once, visible"
           "$mod+CONTROL+SHIFT, right, movewindow, r, once, visible"
+	  "$mod , l , exec , hyprlock --immediate" 
 
         ]
         ++ (

@@ -90,6 +90,7 @@
       google-chrome
       element-desktop-wayland
       spotify
+      grc
       ani-cli
       qbittorrent
       obsidian
@@ -123,10 +124,11 @@
     efitools
     efibootmgr
     gitui
-    silver-searcher
+    ripgrep
     fastfetch
     yq-go
     cloudflare-warp
+    ripgrep
     unzip
     elegant-sddm
     gh
