@@ -86,14 +86,32 @@ in
   programs.home-manager.enable = true;
   programs.fish = {
     enable = true;
-        interactiveShellInit = ''
+    interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    functions = {
+      __fish_command_not_found_handler = {
+        body = "__fish_default_command_not_found_handler $argv[1]";
+        onEvent = "fish_command_not_found";
+      };
+
+      gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+      yy = "set tmp (mktemp -t \"yazi-cwd.XXXXXX\") \n yazi $argv --cwd-file=\"$tmp\" \n if set cwd (cat -- \"$tmp\"); and [ -n \"$cwd\" ]; and [ \"$cwd\" != \"$PWD\" ] \n cd -- \"$cwd\" \n end \n rm -f -- \"$tmp\"";
+    };
     plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
-      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-      { name = "done"; src = pkgs.fishPlugins.done.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf-fish.src; }
+      {
+        name = "grc";
+        src = pkgs.fishPlugins.grc.src;
+      }
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
+      {
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
     ];
   };
   programs.nixvim = import ./nixvim/default.nix;

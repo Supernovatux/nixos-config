@@ -153,7 +153,7 @@ in
           "$mod+CONTROL+SHIFT, up, movewindow, u, once, visible"
           "$mod+CONTROL+SHIFT, down, movewindow, d, once, visible"
           "$mod+CONTROL+SHIFT, right, movewindow, r, once, visible"
-	  "$mod , l , exec , hyprlock --immediate" 
+          "$mod , l , exec , hyprlock --immediate"
 
         ]
         ++ (
