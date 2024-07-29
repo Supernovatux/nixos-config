@@ -94,7 +94,8 @@
       qbittorrent
       obsidian
       mpv
-      flameshot
+      grim
+      swappy
     ];
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
