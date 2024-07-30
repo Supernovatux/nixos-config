@@ -65,6 +65,7 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
   programs.kdeconnect.enable = true;
+  programs.seahorse.enable = true;
   services.printing.enable = true;
   services.xremap.config.modmap = [
     {
@@ -140,6 +141,8 @@
     qogir-icon-theme
     morewaita-icon-theme
     gnome-keyring
+    libgnome-keyring
+    libsecret
     adwaita-icon-theme
     python312
     python312Packages.ipython

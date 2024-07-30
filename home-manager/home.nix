@@ -26,6 +26,7 @@ in
     ls = "eza -l --icons=always";
     cat = "bat";
   };
+  programs.command-not-found.enable = true;
   services.gnome-keyring.enable = true;
 
   # This value determines the Home Manager release that your configuration is
