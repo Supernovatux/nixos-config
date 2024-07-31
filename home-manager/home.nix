@@ -118,5 +118,6 @@ in
   programs.nixvim = import ./nixvim/default.nix;
   programs.kitty = import ./kitty.nix;
   programs.starship = import ./starship.nix;
+  programs.sioyek.enable = true;
   programs.mcfly = fish_conf;
 }

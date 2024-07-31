@@ -13,6 +13,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./tex.nix
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
 

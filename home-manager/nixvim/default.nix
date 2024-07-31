@@ -43,6 +43,7 @@
     };
     treesitter-context.enable = true;
     rainbow-delimiters.enable = true;
+    texpresso.enable = true;
     which-key.enable = true;
     conform-nvim = {
 	enable = true;

@@ -20,6 +20,7 @@ lsp = {
         clangd.enable = true;
         cmake.enable  = true;
         nixd.enable = true;
+        texlab.enable = true;
       };
     };
     }
