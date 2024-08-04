@@ -12,6 +12,11 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-matlab = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "gitlab:doronbehar/nix-matlab";
+    };
+
   };
   outputs =
     inputs@{
@@ -21,9 +26,14 @@
       chaotic,
       xremap,
       lanzaboote,
+      nix-matlab,
       ...
     }:
-    {
+      let
+    flake-overlays = [
+      nix-matlab.overlay
+    ];
+  in {
       # NOTE: 'nixos' is the default hostname set by the installer
       nixosConfigurations.supernovatux = nixpkgs.lib.nixosSystem {
         # NOTE: Change this to aarch64-linux if you are on ARM
@@ -34,6 +44,7 @@
           ./configuration.nix
           nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
           chaotic.nixosModules.default
+	  flake-overlays
         ];
       };
     };

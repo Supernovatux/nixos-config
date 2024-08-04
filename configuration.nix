@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
+flake-overlays:
 {
   config,
   lib,
@@ -62,12 +62,15 @@
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.theme = "elegant-sddm";
+  services.displayManager.sddm.enableHidpi = true;
+  services.displayManager.sddm.theme = "catppuccin-sddm ";
+  services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
   programs.kdeconnect.enable = true;
   programs.seahorse.enable = true;
   services.printing.enable = true;
+  nixpkgs.overlays = flake-overlays;
   services.xremap.config.modmap = [
     {
       name = "Global";
@@ -125,6 +128,8 @@
     gnumake
     sbctl
     efitools
+    matlab
+    matlab-mlint
     efibootmgr
     gitui
     ripgrep
@@ -133,7 +138,7 @@
     cloudflare-warp
     ripgrep
     unzip
-    elegant-sddm
+    catppuccin-sddm
     gh
     nixfmt-rfc-style
     libnotify

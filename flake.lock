@@ -116,6 +116,22 @@
         "type": "github"
       }
     },
+    "flake-compat_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -529,6 +545,27 @@
         "type": "github"
       }
     },
+    "nix-matlab": {
+      "inputs": {
+        "flake-compat": "flake-compat_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1722524500,
+        "narHash": "sha256-jHxxeNomuuCdiiaGp3frv6eXrT+SpriyGPLuniaMyeI=",
+        "owner": "doronbehar",
+        "repo": "nix-matlab",
+        "rev": "cc67fdf03f819dc556a8bc0954b8b86d26508d58",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "doronbehar",
+        "repo": "nix-matlab",
+        "type": "gitlab"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1722114937,
@@ -717,6 +754,7 @@
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
+        "nix-matlab": "nix-matlab",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "xremap": "xremap"
