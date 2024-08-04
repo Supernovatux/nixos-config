@@ -45,6 +45,12 @@ flake-overlays:
     userName = "thulashitharan";
     withKDE = true;
   };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+  nix.settings.auto-optimise-store = true;
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
