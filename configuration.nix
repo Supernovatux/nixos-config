@@ -145,6 +145,7 @@ flake-overlays:
     libnotify
     just
     cachix
+    lm_sensors
     qogir-icon-theme
     morewaita-icon-theme
     gnome-keyring

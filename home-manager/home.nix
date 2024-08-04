@@ -91,10 +91,6 @@ in
       set fish_greeting # Disable greeting
     '';
     functions = {
-      __fish_command_not_found_handler = {
-        body = "__fish_default_command_not_found_handler $argv[1]";
-        onEvent = "fish_command_not_found";
-      };
 
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       yy = "set tmp (mktemp -t \"yazi-cwd.XXXXXX\") \n yazi $argv --cwd-file=\"$tmp\" \n if set cwd (cat -- \"$tmp\"); and [ -n \"$cwd\" ]; and [ \"$cwd\" != \"$PWD\" ] \n cd -- \"$cwd\" \n end \n rm -f -- \"$tmp\"";
