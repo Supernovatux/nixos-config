@@ -140,6 +140,7 @@ flake-overlays:
     efibootmgr
     gitui
     ripgrep
+    lenovo-legion
     fastfetch
     yq-go
     cloudflare-warp
@@ -148,6 +149,7 @@ flake-overlays:
     catppuccin-sddm
     gh
     nixfmt-rfc-style
+    linuxPackages_cachyos.lenovo-legion-module
     libnotify
     just
     cachix
