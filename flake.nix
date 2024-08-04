@@ -41,10 +41,11 @@
         modules = [
           lanzaboote.nixosModules.lanzaboote
           xremap.nixosModules.default
-          ./configuration.nix
+          (import ./configuration.nix
+	    flake-overlays
+	  )
           nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
           chaotic.nixosModules.default
-	  flake-overlays
         ];
       };
     };

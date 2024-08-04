@@ -73,10 +73,10 @@ in
   #
   # or
   #
-  #  /etc/profiles/per-user/thulashitharan/etc/profile.d/hm-session-vars.sh
-  #
+  #  /etc/profiles/per-user/thulashitharan/etc/profile.d/hm-session-vars.shell
   home.sessionVariables = {
     EDITOR = "nvim";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
   programs.btop.enable = true;
   programs.bat.enable = true;

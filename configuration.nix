@@ -2,6 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 flake-overlays:
+
 {
   config,
   lib,
@@ -71,6 +72,7 @@ flake-overlays:
   programs.seahorse.enable = true;
   services.printing.enable = true;
   nixpkgs.overlays = flake-overlays;
+  networking.hostId = "6b216942";
   services.xremap.config.modmap = [
     {
       name = "Global";
@@ -129,7 +131,6 @@ flake-overlays:
     sbctl
     efitools
     matlab
-    matlab-mlint
     efibootmgr
     gitui
     ripgrep
