@@ -185,6 +185,8 @@ in
         ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
       ];
       bindl = [
+	",switch:off:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, preferred, auto, auto\""
+	",switch:on:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, disable\""
         ",XF86AudioPlay,    exec, ${playerctl} play-pause"
         ",XF86AudioStop,    exec, ${playerctl} pause"
         ",XF86AudioPause,   exec, ${playerctl} pause"

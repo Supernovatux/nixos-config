@@ -22,8 +22,10 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ "tpm_crb" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "legion-laptop" ];
+  boot.extraModulePackages = [
+    pkgs.linuxPackages_cachyos.lenovo-legion-module
+  ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 1;
   };

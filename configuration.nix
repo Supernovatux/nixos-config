@@ -26,6 +26,9 @@ flake-overlays:
   boot.loader.efi.canTouchEfiVariables = true;
   security.pam.services.hyprlock = { };
   qt.platformTheme = "gnome";
+  services.upower.enable = true;
+  services.logind.lidSwitchExternalPower = "ignore";
+
   networking.hostName = "supernovatux"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -149,7 +152,6 @@ flake-overlays:
     catppuccin-sddm
     gh
     nixfmt-rfc-style
-    linuxPackages_cachyos.lenovo-legion-module
     libnotify
     just
     cachix
@@ -166,6 +168,7 @@ flake-overlays:
     python312Packages.matplotlib
     libreoffice-qt6-fresh
     lxqt.lxqt-policykit
+    clang-tools
   ];
   programs.thunar.enable = true;
   programs.xfconf.enable = true;

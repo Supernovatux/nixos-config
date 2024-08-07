@@ -45,12 +45,6 @@
     rainbow-delimiters.enable = true;
     texpresso.enable = true;
     which-key.enable = true;
-    conform-nvim = {
-	enable = true;
-        
-	formattersByFt = {
-	  nix = "nixfmt";
-	};
-      };
+    lsp-format.enable = true;
   } // cmp //lsp;
 }
