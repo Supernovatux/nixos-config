@@ -7,6 +7,7 @@ flake-overlays:
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -15,6 +16,7 @@ flake-overlays:
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./tex.nix
+    ./gaming.nix
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
@@ -68,6 +70,10 @@ flake-overlays:
     "root"
     "@wheel"
   ];
+  nix.settings = {
+    substituters = ["https://nix-gaming.cachix.org"];
+    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+  };
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
@@ -79,6 +85,7 @@ flake-overlays:
   security.pam.services.sddm.enableGnomeKeyring = true;
   programs.kdeconnect.enable = true;
   programs.seahorse.enable = true;
+
   services.printing.enable = true;
   nixpkgs.overlays = flake-overlays;
   networking.hostId = "6b216942";
@@ -100,7 +107,7 @@ flake-overlays:
 
   users.users.thulashitharan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "gamemode" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -110,6 +117,7 @@ flake-overlays:
       grc
       ani-cli
       qbittorrent
+      proton-ge-custom
       obsidian
       mpv
       grim
@@ -132,7 +140,6 @@ flake-overlays:
     wget
     git
     neovim
-    gcc
     rustup
     gcc
     gdb

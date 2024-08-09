@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:doronbehar/nix-matlab";
     };
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
   };
   outputs =
@@ -26,6 +27,7 @@
       chaotic,
       xremap,
       lanzaboote,
+      nix-gaming,
       nix-matlab,
       ...
     }:
@@ -38,6 +40,7 @@
       nixosConfigurations.supernovatux = nixpkgs.lib.nixosSystem {
         # NOTE: Change this to aarch64-linux if you are on ARM
         system = "x86_64-linux";
+	specialArgs = {inherit inputs;};
         modules = [
           lanzaboote.nixosModules.lanzaboote
           xremap.nixosModules.default

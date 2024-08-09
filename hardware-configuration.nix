@@ -23,6 +23,8 @@
   ];
   boot.initrd.kernelModules = [ "tpm_crb" ];
   boot.kernelModules = [ "kvm-amd" "legion-laptop" ];
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+  hardware.nvidia.dynamicBoost.enable = true;
   boot.extraModulePackages = [
     pkgs.linuxPackages_cachyos.lenovo-legion-module
   ];

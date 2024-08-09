@@ -40,7 +40,7 @@ in
 
       background = [
         {
-          path = "screenshot";
+          path = "~/nixos-config/home-manager/ags/wl1.webp";
           blur_passes = 3;
           blur_size = 8;
         }
