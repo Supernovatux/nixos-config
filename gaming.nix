@@ -11,7 +11,7 @@
   programs.gamemode = {
     enable = true;
     settings.general.inhibit_screensaver = 0;
-    capSysNice = true;
+    enableRenice = true;
   };
   programs.steam.gamescopeSession.args = ["--hdr-enabled" "--hdr-itm-enable" "-W 2560" "-H 1600" "-O eDP-1" ];
   programs.steam.gamescopeSession.enable = true;
@@ -20,6 +20,7 @@
     gamescope-wsi
     vulkan-tools
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    proton-ge-custom
     dxvk
     dxvk_2
     winetricks

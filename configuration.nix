@@ -117,7 +117,6 @@ flake-overlays:
       grc
       ani-cli
       qbittorrent
-      proton-ge-custom
       obsidian
       mpv
       grim
