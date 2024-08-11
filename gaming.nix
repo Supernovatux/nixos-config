@@ -22,6 +22,7 @@
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     proton-ge-custom
     dxvk
+    xorg.xinit
     dxvk_2
     winetricks
     bottles

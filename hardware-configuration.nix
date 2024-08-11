@@ -15,11 +15,11 @@
   boot.initrd.availableKernelModules = [
     "tpm_crb"
     "nvme"
+    "sd_mod"
     "xhci_pci"
     "ahci"
     "usbhid"
     "usb_storage"
-    "sd_mod"
   ];
   boot.initrd.kernelModules = [ "tpm_crb" ];
   boot.kernelModules = [ "kvm-amd" "legion-laptop" ];
@@ -34,6 +34,7 @@
   security.tpm2.enable = true;
 
   boot.initrd.systemd.enableTpm2 = true;
+  boot.initrd.systemd.enable = true;
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/55853e87-1f12-4749-8e3c-ebd27d86f1fb";
     fsType = "btrfs";
