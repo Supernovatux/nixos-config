@@ -107,11 +107,12 @@ flake-overlays:
 
   users.users.thulashitharan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "gamemode" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "gamemode" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
       google-chrome
+      audacity
       element-desktop-wayland
       spotify
       grc
@@ -125,11 +126,12 @@ flake-overlays:
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     _JAVA_AWT_WM_NONREPARENTING = 1;
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+    NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";
     CLUTTER_BACKEND = "wayland";
@@ -169,10 +171,6 @@ flake-overlays:
     libgnome-keyring
     libsecret
     adwaita-icon-theme
-    python312
-    python312Packages.ipython
-    python312Packages.numpy
-    python312Packages.matplotlib
     libreoffice-qt6-fresh
     lxqt.lxqt-policykit
     clang-tools

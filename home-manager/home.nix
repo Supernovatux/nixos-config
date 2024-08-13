@@ -16,6 +16,7 @@ in
     ./ags.nix
     ./theme.nix
     ./yazi.nix
+    ./vscode.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -28,7 +29,11 @@ in
   };
   programs.command-not-found.enable = true;
   services.gnome-keyring.enable = true;
-
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -116,4 +121,7 @@ in
   programs.starship = import ./starship.nix;
   programs.sioyek.enable = true;
   programs.mcfly = fish_conf;
+  nixpkgs.config = {
+  allowUnfree = true;
+  };
 }
