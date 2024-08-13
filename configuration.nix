@@ -148,6 +148,7 @@ flake-overlays:
     matlab
     efibootmgr
     gitui
+    aria2
     ripgrep
     lenovo-legion
     fastfetch

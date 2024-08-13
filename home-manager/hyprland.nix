@@ -90,7 +90,7 @@ in
         layout = "dwindle";
         resize_on_border = true;
       };
-      monitor = [ "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1" ];
+      monitor = [ "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1" ",preferred,auto,1" ];
       misc = {
         font_family = "Fira Code Nerd Font Light";
         disable_splash_rendering = true;
