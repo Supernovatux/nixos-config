@@ -36,6 +36,7 @@
       };
     nvim-autopairs.enable = true;
     telescope.enable = true;
+    direnv.enable = true;
     treesitter = {
       enable = true;
       nixGrammars = true;

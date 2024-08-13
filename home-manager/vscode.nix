@@ -8,6 +8,7 @@
       pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.ms-toolsai.jupyter
       pkgs.vscode-extensions.ms-vscode.cpptools
+      pkgs.vscode-extensions.mkhl.direnv
     ];
   };
 }
