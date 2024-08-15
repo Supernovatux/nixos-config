@@ -82,6 +82,7 @@ in
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
+	"hyprshade auto"
         "lxqt-policykit-agent"
       ];
       "$mod" = "SUPER";

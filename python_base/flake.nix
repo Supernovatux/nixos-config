@@ -20,15 +20,14 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              jupyter
               (python312.withPackages (
                 ps: with ps; [
                   ipython
-                  pip
-                  jupyterlab
+		  pkgs.jupyter
+		  notebook
+		  pip
                   numpy
                   scipy
-                  notebook
                   matplotlib
                   pandas
                 ]

@@ -28,6 +28,7 @@ flake-overlays:
   boot.loader.efi.canTouchEfiVariables = true;
   security.pam.services.hyprlock = { };
   qt.platformTheme = "gnome";
+  services.getty.autologinUser = "thulashitharan";
   services.upower.enable = true;
   services.logind.lidSwitchExternalPower = "ignore";
 
@@ -87,6 +88,12 @@ flake-overlays:
   programs.seahorse.enable = true;
 
   services.printing.enable = true;
+  services.avahi = {
+   enable = true;
+   nssmdns4 = true;
+   openFirewall = true;
+ };
+  services.printing.drivers = [pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper];
   nixpkgs.overlays = flake-overlays;
   networking.hostId = "6b216942";
   services.xremap.config.modmap = [
@@ -117,6 +124,7 @@ flake-overlays:
       spotify
       grc
       ani-cli
+      hyprshade
       qbittorrent
       obsidian
       mpv
@@ -128,6 +136,7 @@ flake-overlays:
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   environment.sessionVariables = {
     _JAVA_AWT_WM_NONREPARENTING = 1;
+    STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
@@ -143,15 +152,18 @@ flake-overlays:
     neovim
     rustup
     gcc
+    wireshark-qt
     gdb
     gnumake
     sbctl
     efitools
     matlab
     efibootmgr
+    linux-router
     gitui
     aria2
     ripgrep
+    macchanger
     lenovo-legion
     fastfetch
     yq-go
@@ -159,6 +171,7 @@ flake-overlays:
     ripgrep
     unzip
     catppuccin-sddm
+    unrar
     gh
     nixfmt-rfc-style
     libnotify
