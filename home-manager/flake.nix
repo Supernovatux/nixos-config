@@ -46,6 +46,7 @@
         modules = [
           ./home.nix
           nixvim.homeManagerModules.nixvim
+	  (import ./overlays)
         ];
 
         # Optionally use extraSpecialArgs
