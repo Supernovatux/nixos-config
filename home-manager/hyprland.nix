@@ -4,8 +4,17 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   screenshot = import ./screenshot.nix pkgs;
+  fixspace = pkgs.hyprlandPlugins.hyprspace.overrideAttrs (old: {
+      src = pkgs.fetchFromGitHub {
+      owner = "myamusashi";
+      repo = "Hyprspace";
+      rev = "08bfc22d75acf5e3ef93ad47252930bb7f555910";
+      sha256 = pkgs.lib.fakeSha256;
+    };
+    });
 in
 {
+  nixpkgs.overlays = [ fixspace ];
   services.hypridle = {
     enable = true;
     settings = {

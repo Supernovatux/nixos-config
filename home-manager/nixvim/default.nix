@@ -44,7 +44,7 @@
     };
     treesitter-context.enable = true;
     rainbow-delimiters.enable = true;
-    texpresso.enable = true;
+      #texpresso.enable = true;
     which-key.enable = true;
     lsp-format.enable = true;
   } // cmp //lsp;
