@@ -37,16 +37,6 @@ const AsusProfileSelector = () => Menu({
                 }),
             ],
         }),
-        Widget.Separator(),
-        Widget.Button({
-            on_clicked: () => Utils.execAsync("rog-control-center"),
-            child: Widget.Box({
-                children: [
-                    Widget.Icon(icons.ui.settings),
-                    Widget.Label("Rog Control Center"),
-                ],
-            }),
-        }),
     ],
 })
 

@@ -12,7 +12,7 @@ class Asusctl extends Service {
     }
 
     get available() {
-        return Utils.exec("which asusctl", () => true, () => false)
+        return Utils.exec("which legion_cli", () => true, () => false)
     }
 
     #profile: Profile = "Balanced"
@@ -27,7 +27,8 @@ class Asusctl extends Service {
     }
 
     async setProfile(prof: Profile) {
-        await sh(`asusctl profile --profile-set ${prof}`)
+        //await sh(`asusctl profile --profile-set ${prof}`)
+        await sh(`bash -c "echo ${prof.toLowerCase()} > /sys/firmware/acpi/platform_profile"`)
         this.#profile = prof
         this.changed("profile")
     }

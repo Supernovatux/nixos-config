@@ -3,6 +3,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
+  screenshot = import ./screenshot.nix pkgs;
 in
 {
   services.hypridle = {
@@ -154,7 +155,8 @@ in
           "$mod+CONTROL+SHIFT, up, movewindow, u, once, visible"
           "$mod+CONTROL+SHIFT, down, movewindow, d, once, visible"
           "$mod+CONTROL+SHIFT, right, movewindow, r, once, visible"
-          "$mod , l , exec , hyprlock --immediate"
+          "$mod+SHIFT , s , exec , ${screenshot} --no-delay"
+          "$mod , s , exec , ${screenshot}"
 
         ]
         ++ (

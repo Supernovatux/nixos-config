@@ -17,7 +17,6 @@
       url = "gitlab:doronbehar/nix-matlab";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
-
   };
   outputs =
     inputs@{

@@ -28,6 +28,7 @@ flake-overlays:
   boot.loader.efi.canTouchEfiVariables = true;
   security.pam.services.hyprlock = { };
   qt.platformTheme = "gnome";
+  hardware.sane.enable = true;
   services.getty.autologinUser = "thulashitharan";
   services.upower.enable = true;
   services.logind.lidSwitchExternalPower = "ignore";
@@ -49,7 +50,7 @@ flake-overlays:
     # NOTE: since this sample configuration does not have any DE, xremap needs to be started manually by systemctl --user start xremap
     serviceMode = "user";
     userName = "thulashitharan";
-    withKDE = true;
+    withWlroots = true;
   };
   nix.gc = {
     automatic = true;
@@ -71,10 +72,7 @@ flake-overlays:
     "root"
     "@wheel"
   ];
-  nix.settings = {
-    substituters = ["https://nix-gaming.cachix.org"];
-    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
-  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
@@ -89,11 +87,28 @@ flake-overlays:
 
   services.printing.enable = true;
   services.avahi = {
-   enable = true;
-   nssmdns4 = true;
-   openFirewall = true;
- };
-  services.printing.drivers = [pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper];
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  systemd.services.setprofileperm = {
+    path = with pkgs; [
+      bash # adds all binaries from the bash package to PATH
+    ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Description = "Set /sys/firmware/acpi/platform_profile";
+      Type = "oneshot";
+      User = "root";
+      ExecStart = "${pkgs.bash}/bin/bash -c \"chmod a+w /sys/firmware/acpi/platform_profile\"";
+    };
+  };
+
+  services.printing.drivers = [
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
   nixpkgs.overlays = flake-overlays;
   networking.hostId = "6b216942";
   services.xremap.config.modmap = [
@@ -114,7 +129,13 @@ flake-overlays:
 
   users.users.thulashitharan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "gamemode" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "gamemode"
+      "networkmanager"
+      "scanner"
+      "lp"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -122,6 +143,7 @@ flake-overlays:
       audacity
       element-desktop-wayland
       spotify
+      scantailor-advanced
       grc
       ani-cli
       hyprshade
@@ -130,6 +152,7 @@ flake-overlays:
       mpv
       grim
       swappy
+      satty
     ];
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -168,6 +191,7 @@ flake-overlays:
     fastfetch
     yq-go
     cloudflare-warp
+    rpi-imager
     ripgrep
     unzip
     catppuccin-sddm
@@ -175,6 +199,7 @@ flake-overlays:
     gh
     nixfmt-rfc-style
     libnotify
+    usbutils
     just
     cachix
     lm_sensors
