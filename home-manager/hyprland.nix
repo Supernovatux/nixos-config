@@ -84,7 +84,7 @@ in
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-	"hyprshade auto"
+        "hyprshade auto"
         "lxqt-policykit-agent"
       ];
       "$mod" = "SUPER";
@@ -93,7 +93,10 @@ in
         layout = "dwindle";
         resize_on_border = true;
       };
-      monitor = [ "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1" ",preferred,auto,1" ];
+      monitor = [
+        "eDP-1,2560x1600@165.01900,0x0,1.6,bitdepth,10,vrr,1"
+        ",preferred,auto,1"
+      ];
       misc = {
         font_family = "Fira Code Nerd Font Light";
         disable_splash_rendering = true;
@@ -189,8 +192,8 @@ in
         ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
       ];
       bindl = [
-	",switch:off:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, preferred, auto, auto\""
-	",switch:on:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, disable\""
+        ",switch:off:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, preferred, auto, auto\""
+        ",switch:on:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, disable\""
         ",XF86AudioPlay,    exec, ${playerctl} play-pause"
         ",XF86AudioStop,    exec, ${playerctl} pause"
         ",XF86AudioPause,   exec, ${playerctl} pause"

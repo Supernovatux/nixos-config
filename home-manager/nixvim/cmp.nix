@@ -3,7 +3,9 @@
   cmp = {
     enable = true;
     settings = {
-      experimental = { ghost_text = true; };
+      experimental = {
+        ghost_text = true;
+      };
       snippet.expand = ''
         function(args)
           require('luasnip').lsp_expand(args.body)
@@ -46,6 +48,10 @@
   cmp-nvim-lsp-document-symbol.enable = true;
   cmp-nvim-lsp-signature-help.enable = true;
   cmp-latex-symbols.enable = true;
-  cmp-buffer = { enable = true; };
-  cmp_luasnip = { enable = true; };
+  cmp-buffer = {
+    enable = true;
+  };
+  cmp_luasnip = {
+    enable = true;
+  };
 }

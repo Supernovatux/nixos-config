@@ -10,7 +10,7 @@ let
     enableFishIntegration = true;
   };
   fixspace = pkgs.hyprlandPlugins.hyprspace.overrideAttrs (old: {
-      src = pkgs.fetchFromGitHub {
+    src = pkgs.fetchFromGitHub {
       owner = "myamusashi";
       repo = "Hyprspace";
       rev = "08bfc22d75acf5e3ef93ad47252930bb7f555910";
@@ -41,7 +41,7 @@ in
     enable = true;
     nix-direnv.enable = true;
   };
-  
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -130,6 +130,6 @@ in
   programs.sioyek.enable = true;
   programs.mcfly = fish_conf;
   nixpkgs.config = {
-  allowUnfree = true;
+    allowUnfree = true;
   };
 }

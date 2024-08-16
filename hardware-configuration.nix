@@ -22,14 +22,15 @@
     "usb_storage"
   ];
   boot.initrd.kernelModules = [ "tpm_crb" ];
-  boot.kernelModules = [ "kvm-amd" "legion-laptop" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "legion-laptop"
+  ];
   boot.kernel.sysctl."kernel.sysrq" = 1;
   hardware.nvidia.dynamicBoost.enable = true;
   networking.networkmanager.wifi.macAddress = "a8:93:4a:84:ee:01";
   networking.networkmanager.ethernet.macAddress = "7c:10:c9:90:3a:18";
-  boot.extraModulePackages = [
-    pkgs.linuxPackages_cachyos.lenovo-legion-module
-  ];
+  boot.extraModulePackages = [ pkgs.linuxPackages_cachyos.lenovo-legion-module ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 1;
   };

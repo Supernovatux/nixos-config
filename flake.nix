@@ -6,15 +6,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-	url = "github:NixOS/nixos-hardware/master";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    chaotic ={ 
+    chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
     xremap = {
       url = "github:xremap/nix-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
