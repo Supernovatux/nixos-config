@@ -145,6 +145,7 @@ flake-overlays:
       spotify
       scantailor-advanced
       grc
+      discord
       ani-cli
       hyprshade
       qbittorrent
@@ -194,6 +195,7 @@ flake-overlays:
     rpi-imager
     ripgrep
     unzip
+    linuxPackages_cachyos.cpupower
     catppuccin-sddm
     unrar
     gh

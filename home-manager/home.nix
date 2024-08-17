@@ -9,14 +9,6 @@ let
     enable = true;
     enableFishIntegration = true;
   };
-  fixspace = pkgs.hyprlandPlugins.hyprspace.overrideAttrs (old: {
-    src = pkgs.fetchFromGitHub {
-      owner = "myamusashi";
-      repo = "Hyprspace";
-      rev = "08bfc22d75acf5e3ef93ad47252930bb7f555910";
-      sha256 = pkgs.lib.fakeSha256;
-    };
-  });
 in
 {
   imports = [
@@ -32,6 +24,7 @@ in
   home.homeDirectory = "/home/thulashitharan";
   programs.fish.shellAbbrs = {
     cd = "z";
+    lsblk = "lsblk -o NAME,LABEL,SIZE,FSTYPE,FSUSED,MOUNTPOINT";
     ls = "eza -l --icons=always";
     cat = "bat";
   };

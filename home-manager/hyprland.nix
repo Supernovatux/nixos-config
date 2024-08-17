@@ -42,7 +42,7 @@ in
 
       background = [
         {
-          path = "~/nixos-config/home-manager/ags/wl1.webp";
+          path = "~/nixos-config/home-manager/ags/lock.png";
           blur_passes = 3;
           blur_size = 8;
         }
@@ -100,8 +100,11 @@ in
       misc = {
         font_family = "Fira Code Nerd Font Light";
         disable_splash_rendering = true;
+	disable_autoreload = true;
         force_default_wallpaper = 0;
         vrr = 1;
+	vfr = true;
+	focus_on_activate = true;
       };
       input = {
         follow_mouse = 1;
@@ -161,6 +164,7 @@ in
           "$mod+CONTROL+SHIFT, right, movewindow, r, once, visible"
           "$mod+SHIFT , s , exec , ${screenshot} --no-delay"
           "$mod , s , exec , ${screenshot}"
+          "$mod , l , exec , ${pkgs.hyprlock}/bin/hyprlock --immediate"
 
         ]
         ++ (
@@ -209,7 +213,7 @@ in
       bindr = [ "SUPER,SUPER_L,exec,ags -b hypr -t launcher" ];
       decoration = {
         rounding = 10;
-        drop_shadow = "yes";
+        drop_shadow = false;
         shadow_range = 8;
         shadow_render_power = 2;
         "col.shadow" = "rgba(00000044)";

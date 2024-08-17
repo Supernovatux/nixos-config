@@ -10,6 +10,22 @@
 }:
 
 {
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+      NMI_WATCHDOG = 0;
+      PLATFORM_PROFILE_ON_AC="performance";
+PLATFORM_PROFILE_ON_BAT="quiet";
+
+    };
+  };
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.initrd.availableKernelModules = [

@@ -59,7 +59,7 @@ const options = mkOptions(OPTIONS, {
 
     font: {
         size: opt(11),
-        name: opt("Fira Code Nerd Font Propo Light"),
+        name: opt("Fira Code Nerd Font Light"),
     },
 
     bar: {
@@ -113,7 +113,7 @@ const options = mkOptions(OPTIONS, {
             low: opt(30),
         },
         workspaces: {
-            workspaces: opt(6),
+            workspaces: opt(10),
         },
         taskbar: {
             iconSize: opt(16),
