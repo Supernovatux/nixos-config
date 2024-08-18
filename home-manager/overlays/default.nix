@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
@@ -21,5 +22,11 @@
         });
       };
     })
+    (
+      final: prev: {
+	inherit (inputs.tex-latext.legacyPackages.${prev.system})
+	  texpresso tectonic-unwrapped;
+      }
+    )
   ];
 }

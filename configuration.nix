@@ -148,6 +148,7 @@ flake-overlays:
       discord
       ani-cli
       hyprshade
+      gimp
       qbittorrent
       obsidian
       mpv
@@ -195,6 +196,7 @@ flake-overlays:
     rpi-imager
     ripgrep
     unzip
+    clevis
     linuxPackages_cachyos.cpupower
     catppuccin-sddm
     unrar

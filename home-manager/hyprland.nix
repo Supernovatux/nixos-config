@@ -82,6 +82,7 @@ in
     settings = {
       xwayland.force_zero_scaling = true;
       exec-once = [
+	"cat ~/.config/gnome-keyring-tpm-unlock/secret.txt | gnome-keyring-daemon --unlock --replace"
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
         "hyprshade auto"
