@@ -17,6 +17,7 @@ flake-overlays:
     ./hardware-configuration.nix
     ./tex.nix
     ./gaming.nix
+    ./xremap.nix
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
@@ -34,8 +35,6 @@ flake-overlays:
   services.logind.lidSwitchExternalPower = "ignore";
 
   networking.hostName = "supernovatux"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -46,12 +45,6 @@ flake-overlays:
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  services.xremap = {
-    # NOTE: since this sample configuration does not have any DE, xremap needs to be started manually by systemctl --user start xremap
-    serviceMode = "user";
-    userName = "thulashitharan";
-    withWlroots = true;
-  };
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -111,14 +104,6 @@ flake-overlays:
   ];
   nixpkgs.overlays = flake-overlays;
   networking.hostId = "6b216942";
-  services.xremap.config.modmap = [
-    {
-      name = "Global";
-      remap = {
-        "KEY_RIGHTALT" = "KEY_BACKSPACE";
-      }; # globally remap CapsLock to Esc
-    }
-  ];
   services.pipewire = {
     enable = true;
     pulse.enable = true;

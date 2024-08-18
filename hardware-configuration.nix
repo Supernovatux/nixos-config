@@ -21,8 +21,8 @@
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
       NMI_WATCHDOG = 0;
-      PLATFORM_PROFILE_ON_AC="performance";
-PLATFORM_PROFILE_ON_BAT="quiet";
+      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_BAT = "quiet";
 
     };
   };
