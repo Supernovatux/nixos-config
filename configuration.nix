@@ -12,7 +12,6 @@ flake-overlays:
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./tex.nix
     ./gaming.nix
