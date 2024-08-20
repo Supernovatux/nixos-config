@@ -817,6 +817,7 @@
         "nix-matlab": "nix-matlab",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "tex-latext": "tex-latext",
         "xremap": "xremap"
       }
     },
@@ -919,6 +920,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "tex-latext": {
+      "locked": {
+        "lastModified": 1722127307,
+        "narHash": "sha256-w33t18bjdaQJqJCgmkSYUtHzTiiOWP9M6IxTsGCFzqo=",
+        "owner": "r-ryantm",
+        "repo": "nixpkgs",
+        "rev": "86576d96a894b7c605c2b5266a1b6777d3d84a47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "r-ryantm",
+        "ref": "auto-update/flashprint",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

@@ -28,6 +28,7 @@ flake-overlays:
   security.pam.services.hyprlock = { };
   qt.platformTheme = "gnome";
   hardware.sane.enable = true;
+  nixpkgs.config.allowUnfree = true;
   services.getty.autologinUser = "thulashitharan";
   services.upower.enable = true;
   services.logind.lidSwitchExternalPower = "ignore";
@@ -127,10 +128,12 @@ flake-overlays:
       element-desktop-wayland
       spotify
       scantailor-advanced
+      flashprint
       grc
       discord
       ani-cli
       hyprshade
+      qview
       gimp
       qbittorrent
       obsidian
@@ -242,7 +245,6 @@ flake-overlays:
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
-  nixpkgs.config.allowUnfree = true;
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.

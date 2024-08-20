@@ -28,6 +28,7 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tex-latext.url = "github:r-ryantm/nixpkgs/auto-update/flashprint";
   };
   outputs =
     inputs@{
@@ -58,6 +59,7 @@
           (import ./configuration.nix flake-overlays)
           nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
           chaotic.nixosModules.default
+	  (import ./overlays)
         ];
       };
     };
