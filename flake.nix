@@ -39,6 +39,7 @@
       xremap,
       lanzaboote,
       nix-gaming,
+      tex-latext,
       nix-matlab,
       ...
     }:
@@ -52,6 +53,12 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          tex-latext = import tex-latext {
+            config.allowUnfree = true;
+            localSystem = {
+              system = "x86_64-linux";
+            };
+          };
         };
         modules = [
           lanzaboote.nixosModules.lanzaboote
@@ -59,7 +66,7 @@
           (import ./configuration.nix flake-overlays)
           nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
           chaotic.nixosModules.default
-	  (import ./overlays)
+          (import ./overlays)
         ];
       };
     };

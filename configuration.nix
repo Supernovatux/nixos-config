@@ -7,6 +7,7 @@ flake-overlays:
   config,
   lib,
   pkgs,
+  tex-latext,
   inputs,
   ...
 }:
@@ -40,6 +41,7 @@ flake-overlays:
   time.timeZone = "Asia/Kolkata";
   services.cloudflare-warp.enable = true;
   programs.hyprland.enable = true;
+  time.hardwareClockInLocalTime = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -128,7 +130,7 @@ flake-overlays:
       element-desktop-wayland
       spotify
       scantailor-advanced
-      flashprint
+      tex-latext.flashprint
       grc
       discord
       ani-cli
@@ -137,6 +139,7 @@ flake-overlays:
       gimp
       qbittorrent
       obsidian
+      yt-dlp
       mpv
       grim
       swappy
@@ -181,6 +184,7 @@ flake-overlays:
     cloudflare-warp
     rpi-imager
     ripgrep
+    ffmpeg
     unzip
     clevis
     linuxPackages_cachyos.cpupower

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  tex-latext,
   inputs,
   ...
 }:
@@ -10,7 +11,7 @@
   nixpkgs.overlays = [
     (
       final: prev: {
-	inherit (inputs.tex-latext.legacyPackages.${prev.system})
+	inherit (tex-latext.legacyPackages.${prev.system})
 	  flashprint;
       }
     )

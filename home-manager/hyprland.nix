@@ -82,7 +82,7 @@ in
     settings = {
       xwayland.force_zero_scaling = true;
       exec-once = [
-	"cat ~/.config/gnome-keyring-tpm-unlock/secret.txt | gnome-keyring-daemon --unlock --replace"
+        "cat ~/.config/gnome-keyring-tpm-unlock/secret.txt | gnome-keyring-daemon --unlock --replace"
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
         "hyprshade auto"
@@ -101,11 +101,11 @@ in
       misc = {
         font_family = "Fira Code Nerd Font Light";
         disable_splash_rendering = true;
-	disable_autoreload = true;
+        disable_autoreload = true;
         force_default_wallpaper = 0;
         vrr = 1;
-	vfr = true;
-	focus_on_activate = true;
+        vfr = true;
+        focus_on_activate = true;
       };
       input = {
         follow_mouse = 1;

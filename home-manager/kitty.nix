@@ -15,7 +15,7 @@
     tab_bar_style = "powerline";
     tab_powerline_style = "round";
     active_tab_foreground = "#111826";
-    active_tab_background   = "#9ABBD9";
+    active_tab_background = "#9ABBD9";
     inactive_tab_foreground = "#111826";
     inactive_tab_background = "#6C87D9";
   };

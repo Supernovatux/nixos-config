@@ -121,6 +121,7 @@ in
   programs.kitty = import ./kitty.nix;
   programs.starship = import ./starship.nix;
   programs.sioyek.enable = true;
+  programs.sioyek.package = inputs.sioyek-git-flake.packages.x86_64-linux.sioyek;
   programs.mcfly = fish_conf;
   nixpkgs.config = {
     allowUnfree = true;

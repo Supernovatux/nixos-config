@@ -303,7 +303,28 @@
         "matugen": "matugen",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "sioyek-git-flake": "sioyek-git-flake",
         "tex-latext": "tex-latext"
+      }
+    },
+    "sioyek-git-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725130368,
+        "narHash": "sha256-M1RAEkfepQt3ed+p6CXIxrvAfJWDZDxCi6z9ZsMzroA=",
+        "owner": "Supernovatux",
+        "repo": "sioyek-git-flake",
+        "rev": "8cb127b83bb391ac738a25aa3b53cdfe863c4599",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Supernovatux",
+        "repo": "sioyek-git-flake",
+        "type": "github"
       }
     },
     "systems": {

@@ -16,6 +16,10 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sioyek-git-flake = {
+      url = "github:Supernovatux/sioyek-git-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     tex-latext.url = "github:r-ryantm/nixpkgs/auto-update/texpresso";
     matugen = {
