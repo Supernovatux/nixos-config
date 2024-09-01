@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tex-latext.url = "github:r-ryantm/nixpkgs/auto-update/texpresso";
+    #tex-latext.url = "github:r-ryantm/nixpkgs/auto-update/texpresso";
     matugen = {
       url = "github:InioX/matugen";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -38,4 +38,9 @@
     bottles
     vkd3d
   ];
+  users.users.thulashitharan = {
+    packages = with pkgs; [
+      openttd
+    ];
+  };
 }

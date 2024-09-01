@@ -7,7 +7,6 @@ flake-overlays:
   config,
   lib,
   pkgs,
-  tex-latext,
   inputs,
   ...
 }:
@@ -130,7 +129,7 @@ flake-overlays:
       element-desktop-wayland
       spotify
       scantailor-advanced
-      tex-latext.flashprint
+      flashprint
       grc
       discord
       ani-cli

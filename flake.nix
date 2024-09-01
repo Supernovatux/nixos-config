@@ -28,7 +28,6 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tex-latext.url = "github:r-ryantm/nixpkgs/auto-update/flashprint";
   };
   outputs =
     inputs@{
@@ -39,7 +38,6 @@
       xremap,
       lanzaboote,
       nix-gaming,
-      tex-latext,
       nix-matlab,
       ...
     }:
@@ -53,12 +51,12 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          tex-latext = import tex-latext {
-            config.allowUnfree = true;
-            localSystem = {
-              system = "x86_64-linux";
-            };
-          };
+          # tex-latext = import tex-latext {
+          #   config.allowUnfree = true;
+          #   localSystem = {
+          #     system = "x86_64-linux";
+          #   };
+          # };
         };
         modules = [
           lanzaboote.nixosModules.lanzaboote
