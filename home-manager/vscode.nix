@@ -4,11 +4,12 @@
     enable = true;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    extensions = [
-      pkgs.vscode-extensions.ms-python.python
-      pkgs.vscode-extensions.ms-toolsai.jupyter
-      pkgs.vscode-extensions.ms-vscode.cpptools
-      pkgs.vscode-extensions.mkhl.direnv
+    extensions = with pkgs; [
+      vscode-extensions.ms-python.python
+      vscode-extensions.ms-toolsai.jupyter
+      vscode-extensions.ms-vscode.cpptools
+      vscode-extensions.mkhl.direnv
+      vscode-extensions.ms-python.black-formatter
     ];
   };
 }

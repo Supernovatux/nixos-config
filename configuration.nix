@@ -23,6 +23,9 @@ flake-overlays:
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
+  hardware.opengl = {
+    enable = true;
+  };
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
   security.pam.services.hyprlock = { };
@@ -119,10 +122,13 @@ flake-overlays:
       "gamemode"
       "networkmanager"
       "scanner"
+      "video"
       "lp"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
+      brave
+      kicad
       tree
       google-chrome
       audacity
@@ -130,7 +136,10 @@ flake-overlays:
       spotify
       scantailor-advanced
       flashprint
+      arduino-ide
       grc
+      speedtest-rs
+      zip
       discord
       ani-cli
       hyprshade
@@ -143,6 +152,7 @@ flake-overlays:
       grim
       swappy
       satty
+      super-productivity
     ];
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -161,11 +171,13 @@ flake-overlays:
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    quickemu
     git
     neovim
     rustup
     gcc
     wireshark-qt
+    qemu
     gdb
     gnumake
     sbctl
@@ -183,6 +195,7 @@ flake-overlays:
     cloudflare-warp
     rpi-imager
     ripgrep
+    lan-mouse
     ffmpeg
     unzip
     clevis

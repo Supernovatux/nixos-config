@@ -26,11 +26,16 @@
   ];
   programs.steam.gamescopeSession.enable = true;
   programs.steam.enable = true;
+  services.xserver.windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+    ];
+  };
   environment.systemPackages = with pkgs; [
     gamescope-wsi
     vulkan-tools
-    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-    proton-ge-custom
+    wineWowPackages.unstableFull
     dxvk
     xorg.xinit
     dxvk_2
