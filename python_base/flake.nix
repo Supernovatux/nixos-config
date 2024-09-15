@@ -23,9 +23,9 @@
               (python312.withPackages (
                 ps: with ps; [
                   ipython
-		  pkgs.jupyter
-		  notebook
-		  pip
+                  pkgs.jupyter
+                  notebook
+                  pip
                   numpy
                   scipy
                   matplotlib

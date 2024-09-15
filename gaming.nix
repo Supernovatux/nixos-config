@@ -27,9 +27,9 @@
   programs.steam.gamescopeSession.enable = true;
   programs.steam.enable = true;
   services.xserver.windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
+    enable = true;
+    extraPackages = with pkgs; [
+      dmenu
     ];
   };
   environment.systemPackages = with pkgs; [

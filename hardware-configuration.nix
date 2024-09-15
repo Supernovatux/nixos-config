@@ -29,7 +29,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.supportedFilesystems = [ "ntfs" ];
-  hardware.nvidia.open=false;
+  hardware.nvidia.open = false;
   boot.initrd.availableKernelModules = [
     "tpm_crb"
     "nvme"
