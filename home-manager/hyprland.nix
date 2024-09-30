@@ -141,6 +141,7 @@ in
         [
           "$mod, RETURN, exec, kitty -1"
           "$mod, SPACE, togglefloating"
+          "$mod, PERIOD, exec, wofi-emoji"
           "$mod, f, fullscreen"
           "$mod, p, togglesplit"
           "$mod+SHIFT , q , killactive"

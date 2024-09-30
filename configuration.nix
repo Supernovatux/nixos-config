@@ -18,7 +18,7 @@ flake-overlays:
     ./xremap.nix
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
-
+  virtualisation.spiceUSBRedirection.enable = true;
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
@@ -28,6 +28,20 @@ flake-overlays:
   };
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.sane.brscan4.enable = true;
+  services.udev.packages = [
+    pkgs.platformio-core
+    pkgs.openocd
+    pkgs.sane-airscan
+  ];
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+  services.ipp-usb.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glibc
+    python3
+    git
+  ];
   security.pam.services.hyprlock = { };
   qt.platformTheme = "gnome";
   hardware.sane.enable = true;
@@ -121,6 +135,8 @@ flake-overlays:
       "wheel"
       "gamemode"
       "networkmanager"
+      "plugdev"
+      "dialout"
       "scanner"
       "video"
       "lp"
@@ -134,11 +150,14 @@ flake-overlays:
       audacity
       element-desktop-wayland
       spotify
-      scantailor-advanced
+      arduino-cli
+      anydesk
+      easyeffects
+      skanpage
       flashprint
-      arduino-ide
       grc
       speedtest-rs
+      telegram-desktop
       zip
       discord
       ani-cli
@@ -146,6 +165,7 @@ flake-overlays:
       qview
       gimp
       qbittorrent
+      wofi-emoji
       obsidian
       yt-dlp
       mpv
@@ -174,7 +194,6 @@ flake-overlays:
     quickemu
     git
     neovim
-    rustup
     gcc
     wireshark-qt
     qemu
@@ -188,6 +207,7 @@ flake-overlays:
     gitui
     aria2
     ripgrep
+    python3
     macchanger
     lenovo-legion
     fastfetch
@@ -195,8 +215,10 @@ flake-overlays:
     cloudflare-warp
     rpi-imager
     ripgrep
+    speedtest-rs
     lan-mouse
     ffmpeg
+    smartmontools
     unzip
     clevis
     linuxPackages_cachyos.cpupower

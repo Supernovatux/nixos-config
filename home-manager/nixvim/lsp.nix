@@ -21,6 +21,11 @@
       cmake.enable = true;
       nixd.enable = true;
       texlab.enable = true;
+      rust-analyzer = {
+        enable = true;
+        installCargo = false;
+        installRustc = false;
+      };
     };
   };
 }

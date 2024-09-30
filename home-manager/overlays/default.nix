@@ -9,6 +9,7 @@
 
 {
   nixpkgs.overlays = [
+    inputs.nix-vscode-extensions.overlays.default
     # (final: prev: {
     #   hyprlandPlugins = prev.hyprlandPlugins // {
     #     hyprspace = prev.hyprlandPlugins.hyprspace.overrideAttrs (old: {
